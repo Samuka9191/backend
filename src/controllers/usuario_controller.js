@@ -12,6 +12,35 @@ const cadastrar = async (req, res) => {
    }
 };
 
+const listar = async (req, res) => {
+    try {
+        const usuarios = await usuario.listar();
+
+        res.status(200).json(usuarios).end();
+    }catch (err) {
+        res.status(500).json({ erro: err.message}).end();
+    }
+}
+
+const buscar = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        const info = await usuario.buscar(id);
+
+        if(info.length === 0){
+            res.status(404).json({info: "Usuario não encontrado"}).end();
+        } else {
+            delete info[0].senha;
+            res.status(200).json(info[0]).end();
+        }
+    }catch (err){
+        res.status(500).json({erro: err.message}).end()
+    }
+};
+
 module.exports = {
-    cadastrar
+    cadastrar,
+    listar,
+    buscar
 };

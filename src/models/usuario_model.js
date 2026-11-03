@@ -15,23 +15,26 @@ const cadastrar =  async ({ nome, cpf, email, senha}) => {
    };
 };
 
-const listar = (req, res) => {
+const listar = async (req, res) => {
+    const [result] = await con.query("SELECT * FROM usuarios;");
+
+    return result;
+};
+
+const buscar = async (id) => {
+    const [result] = await con.query("SELECT * FROM usuarios WHERE id = ?;", [id]);
+    return result;
+};
+
+const excluir = async (req, res) => {
 
 }
 
-const buscar = (req, res) =>{
+const atualizar = async (req, res) => {
 
 }
 
-const excluir = (req, res) => {
-
-}
-
-const atualizar = (req, res) => {
-
-}
-
-const alterar = (req, res) => {
+const alterar = async (req, res) => {
 
 }
 
