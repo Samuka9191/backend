@@ -26,11 +26,14 @@ const buscar = async (id) => {
     return result;
 };
 
-const excluir = async (req, res) => {
+const excluir = async (id) => {
+    const [result] = await con.query("DELETE FROM usuarios WHERE id = ?;", [id]);
+    return result.affectedRows;
+};
 
-}
+const atualizar = async () => {
 
-const atualizar = async (req, res) => {
+
 
 }
 

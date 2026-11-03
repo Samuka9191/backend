@@ -39,8 +39,25 @@ const buscar = async (req, res) => {
     }
 };
 
+const excluir = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        const numLinhas = await usuario.excluir(id);
+
+        if(numLinhas == 0){
+            res.status(404).json({info: "Usuario não encontrado"}).end();
+        } else {
+            res.status(204).json({info: "Usuario excluido com sucesso"}).end();
+        }
+    }catch (err){
+        res.status(500).json({erro: err.message}).end()
+    }
+};
+
 module.exports = {
     cadastrar,
     listar,
-    buscar
+    buscar,
+    excluir
 };
