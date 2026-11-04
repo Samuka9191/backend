@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
@@ -32,3 +33,21 @@ header > ul {
 header > ul > li {
     float: left;
 } */
+
+.container {
+    width: 100vw;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.container > table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.container > h2 {
+    align-self: start;
+}
